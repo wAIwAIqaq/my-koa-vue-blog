@@ -1,0 +1,53 @@
+// 最大宽度
+@window-Width :70%;
+@body-bg     : #eb1c1c;
+@color-light : rgb(43, 46, 204);
+@color-dark  : rgb(15, 165, 157);
+.page{
+    padding: 32px;
+    text-align: center;
+}
+div{
+    -moz-user-select:none;/*火狐*/
+    -webkit-user-select:none;/*webkit浏览器*/
+    -ms-user-select:none;/*IE10*/
+    -khtml-user-select:none;/*早期浏览器*/
+      user-select:none;
+}
+// 头部
+.sidebar-header{
+    display: flex;
+    justify-content:space-between;
+    padding: 16px 32px;
+    align-items: center;
+    border-bottom: 1px solid #f8f8f8;
+}
+.sidebar-header .icon{
+    color:#2f8cf0
+}
+.sidebar-header-title{
+    color:#515a6e;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.sidebar-header-more{
+    font-size: 18px;
+    color:#989898;
+    cursor: pointer;
+
+    &::after{
+        content: '';
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-top: 1px solid #d9d9d9;
+        border-right: 1px solid #d9d9d9;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
+}
+&:hover{
+   color:#2f8cf0;
+}
