@@ -15,7 +15,9 @@ import {
   Select,
   DropdownItem,
   Upload,
-  Tag
+  Tag,
+  Tabs,
+  TabPane
 } from "element-ui";
 Vue.use(Button);
 Vue.use(Input);
@@ -32,4 +34,6 @@ Vue.use(Upload);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Tag);
+Vue.use(Tabs)
+Vue.use(TabPane);
 Vue.prototype.$message = Message;

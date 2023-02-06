@@ -30,7 +30,7 @@
               >{{ item.name }}</el-option
             >
           </el-select>
-          <el-button style="margin-left:10px"; type="text" @click="showCreateCategoryDialog"
+          <el-button style="margin-left:10px" type="text" @click="showCreateCategoryDialog"
             >创建分类</el-button
           >
         </template>

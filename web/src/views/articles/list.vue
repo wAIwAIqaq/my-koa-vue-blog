@@ -3,20 +3,19 @@
   <section class="articles">
     <article class="article-list">
       <!-- 文章分类显示 -->
-      <ul class="category" v-if="categoryList && categoryList.length > 0">
-        <li
-          class="category-item"
+      <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+        <el-tab-pane
           v-for="(item, i) in categoryList"
           :key="item._id"
           :class="{ 'category-item-active': categoryIndex == i }"
           @click="changeCategory(item._id, i)"
+          :label="item.name"
+          :name="item.name"
         >
-          {{ item.name }}
-        </li>
-      </ul>
-      <!-- 文章组件-->
-      <v-article-item :list="list" />
-
+          <!-- 文章组件-->
+          <v-article-item :list="list" />
+        </el-tab-pane>
+      </el-tabs>
       <div class="page">
         <!-- 分页组件 -->
         <el-pagination
@@ -49,6 +48,7 @@ export default {
       list: [],
       page: {},
       currentPage: 1,
+      activeName: ''
     };
   },
   computed: {
@@ -60,6 +60,8 @@ export default {
   },
   async created() {
     await this.getCategoryList();
+    console.log(this.categoryList);
+    this.activeName = this.categoryList[0].name;
     this.getArticle();
   },
   watch: {
@@ -72,6 +74,11 @@ export default {
       getCategoryList: "category/list",
       getArticleList: "article/list",
     }),
+
+    handleClick(val){
+      this.changeCategory(this.categoryList[val.index]._id, this.categoryList[val.index]);
+    },
+
     async getArticle() {
       const params = {
         currentPage: this.currentPage,
@@ -106,6 +113,18 @@ export default {
 </script>
 
 <style scoped lang="less">
+::v-deep .el-tabs{
+  .el-tabs__header{
+     margin-bottom: 0;
+     .el-tabs__nav{
+      border-top: none;
+      border-left: none;
+      border-radius: 0;
+     }
+
+  }
+
+}
 .category {
   width: 100%;
   overflow: hidden;
